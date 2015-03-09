@@ -19,6 +19,7 @@
 var app = {
     //Index for paging
      index: 0,
+     cacheIndex: 0,
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -42,6 +43,56 @@ var app = {
     receivedEvent: function(id) {
         $( document ).on( "swipeleft", ".chapter", function(e){slideRight()});
         $( document ).on( "swiperight", ".chapter", function(e){slideLeft()});
+
+        $('#button').click(function() {
+            alert("click was second :(");
+        });
+
+        $('#button').on('tap', function() {
+            alert("tap was first!");
+        });
+
+        $('#loadData').on('tap', function(){
+            
+            $('#ajaxContent1').html('<img src="img/loader.gif" width="60px" />');
+
+            setTimeout(function(){
+                   $('#ajaxContent1').html('<h2>Title: You loaded a puppy yay! :D</h2><p>Text: puppy is angry :(</p>');
+            }, 3000);
+
+        });
+
+        $('#clearCache').on('tap', function(){
+            window.localStorage.clear();
+        });
+
+        $('#loadCache').on('tap', function(){
+            
+            if(window.localStorage.cachedData)
+            {
+                var cachedTime = new Date(window.localStorage.cachedData);
+
+                var time = new Date();
+                if(time < cachedTime)
+                {
+                    alert("still cached");
+                }
+                else
+                {
+                    var time = new Date();
+                    time.setSeconds(time.getSeconds() + 10);
+                    window.localStorage.cachedData = time;
+                    alert("refreshed cache");
+                }
+            }
+            else
+            {
+                var time = new Date();
+                time.setSeconds(time.getSeconds() + 10);
+                window.localStorage.cachedData = time;
+                alert("new Cache!");
+            }
+        });
     }
 };
 

@@ -34,6 +34,7 @@
 
         <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/preLoad.js"></script>
     </head>
     <body>
 
@@ -66,11 +67,44 @@
             <img src="img/panda5.jpg" width="50%"/>
         </div>       
 
+        <div class="chapter" data-role="page" id="page_4" data-url="page_4">
+
+            <h2>Spritesheet</h2>
+            <ul data-role="listview">
+                <li><h3>Karthus</h3> <div class="champs" id="karthus" /></li>
+                <li><h3>Miss fortune</h3> <div class="champs" id="mf" /></li>
+            </ul>
+        </div>      
+
+        <div class="chapter" data-role="page" id="page_5" data-url="page_5">
+            <h2>Click <B>V.S.</B> Touch</h2>
+            <button id="button">Click me and let the eppic battle begin!</button>
         </div>
+
+        <div class="chapter" data-role="page" id="page_6" data-url="page_6">
+            <h2>Ajax call</h2>
+
+            <div id="ajaxContent1">
+                <button id="loadData">load data</button>
+            </div>
+
+        </div>
+
+        <div class="chapter" data-role="page" id="page_7" data-url="page_7">
+            <h2>Caching static data</h2>
+
+
+                <button id="loadCache">load data</button>
+
+
+                <button id="clearCache">clear Cache</button>
+
+
+        </div>   
+
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
-        <script src="js/preLoad.js"></script>
     </body>
 </html>

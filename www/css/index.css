@@ -127,3 +127,23 @@ h1 {
     text-align:center;
     font-size: 30px;
 }
+
+.champs{
+    background-image: url('../img/champs.png');
+    display:block;
+    position:relative;
+    border:1px solid;
+    height:67px;
+    width:67px;
+}
+
+#karthus{
+    background-position: -67px -67px;
+}
+
+#mf{
+    background-position: -67px -134px;
+}
+
+
+
