@@ -41,52 +41,90 @@
         <div class="chapter" data-role="page" id="page_0" data-url="page_0">
             <h1>Bad Perfor...</h1>
             <img src="img/loader.gif" width="100px" />
-            <p>A small demo on how to improve your performance (wink, wink)</p>
-        </div>
-            
-        <div class="chapter" data-role="page" id="page_1" data-url="page_1">
+            <p>A small demo on how to improve your performance.</p>
+
             <h2>Images<h2>
             <img src="http://itsfunny.org/wp-content/uploads/2013/02/Funny-panda-kung-fu.jpg" width="100%" />
             <img src="http://znatok.info/wp-content/uploads/2015/01/funny-panda-kweaqvni.jpg" width="100%" />
-            <img src="http://wallpapperpix.com/wp-content/uploads/2014/10/Funny-Panda.jpg" width="100%"/>
+            <img src="http://wallpaper2u.net/thumbs/animals/funny-panda-rock-wildlife-5632-480x320.jpg" width="100%"/>
+        </div>
+            
+        <div class="chapter" data-role="page" id="page_1" data-url="page_1">
+
+            <h2>Preloaded Images<h2>
+            <img src="http://itsfunny.org/wp-content/uploads/2013/02/Funny-panda-kung-fu.jpg" width="100%" />
+            <img src="http://znatok.info/wp-content/uploads/2015/01/funny-panda-kweaqvni.jpg" width="100%" />
+            <img src="http://wallpaper2u.net/thumbs/animals/funny-panda-rock-wildlife-5632-480x320.jpg" width="100%"/>
 
         </div>
 
         <div class="chapter" data-role="page" id="page_2" data-url="page_2">
-            <h2>Preloaded Images<h2>
-            <img src="http://itsfunny.org/wp-content/uploads/2013/02/Funny-panda-kung-fu.jpg" width="100%" />
-            <img src="http://znatok.info/wp-content/uploads/2015/01/funny-panda-kweaqvni.jpg" width="100%" />
-            <img src="http://wallpapperpix.com/wp-content/uploads/2014/10/Funny-Panda.jpg" width="100%"/>
 
-        </div>
-
-         
-        <div class="chapter" data-role="page" id="page_3" data-url="page_3">
-
-            <h2>Preloaded with Jqueryy<h2>
-            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Immortal%2C_Olve_%E2%80%9EAbbath%E2%80%9C_Eikemo_12.jpg/640px-Immortal%2C_Olve_%E2%80%9EAbbath%E2%80%9C_Eikemo_12.jpg" width="100"/>
+            <h2>Preloaded with Jquery<h2>
+            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Immortal%2C_Olve_%E2%80%9EAbbath%E2%80%9C_Eikemo_12.jpg/640px-Immortal%2C_Olve_%E2%80%9EAbbath%E2%80%9C_Eikemo_12.jpg" width="100%"/>
         </div>       
 
-        <div class="chapter" data-role="page" id="page_4" data-url="page_4">
+        <div class="chapter" data-role="page" id="page_3" data-url="page_3">
 
-            <h2>Spritesheet</h2>
+            <h1>Spritesheet</h1>
+
+            <h2>Originele spritesheet</h2>
+
+            <img src="img/champs.png" width="70%" style="min-height::100px;"/>
+
+            <h2>Snippets</h2>
+
             <ul data-role="listview">
-                <li><h3>Karthus</h3> <div class="champs" id="karthus" /></li>
-                <li><h3>Miss fortune</h3> <div class="champs" id="mf" /></li>
+                <li class="champion">
+                    <div class="ui-grid-b ">
+                        <div class="ui-block-a">
+                             <div class="champs" id="karthus" ></div>  
+                        </div>
+                        <div class="ui-block-b">   
+                            <h3>Karthus</h3>
+                        </div>
+                     </div>  
+                </li>
+                <li class="champion">
+                    <p>
+                        css:  background-position: -67px -67px;
+                    </p>
+                </li>
+                <li class="champion">
+                <li>
+                    <div class="ui-grid-b champion">
+                        <div class="ui-block-a">
+                             <div class="champs" id="mf" ></div>
+                        </div>
+                        <div class="ui-block-b">   
+                              <h3>Miss fortune</h3>
+                        </div>
+                     </div>  
+                </li>
+                 <li class="champion">
+                    <p>
+                        css:  background-position: -67px -134px;
+                    </p>
+                </li>
             </ul>
         </div>      
 
-        <div class="chapter" data-role="page" id="page_5" data-url="page_5">
+        <div class="chapter" data-role="page" id="page_4" data-url="page_4">
             <h2>Click <B>V.S.</B> Touch</h2>
-            <button id="button">Click me and let the eppic battle begin!</button>
+            <button id="button"><h2>Click me!</h2></button>
+            <h3>click time:<span id="clickDate"></span></h3>
+            <h3>tap time:<span id="tapDate"><span></h3>
+            <h3>difference:<span id="difference"><span></h3>
         </div>
 
-        <div class="chapter" data-role="page" id="page_6" data-url="page_6">
-            <h2>Ajax call</h2>
+        <div class="chapter" data-role="page" id="page_5" data-url="page_5">
+            <h1>Ajax call</h1>
 
-            <div id="ajaxContent1">
-                <button id="loadData">load data</button>
-            </div>
+            <button id="loadData"><h3>load</h3></button>
+
+            <ul id="ajaxContent" data-role="listview">
+                <li><h3>No data to show</h3></li>
+            </ul>
 
         </div>
 

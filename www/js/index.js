@@ -20,6 +20,8 @@ var app = {
     //Index for paging
      index: 0,
      cacheIndex: 0,
+     clickDate: null,
+     tapDate: null,
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -37,27 +39,46 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
+
+        $('.chapter').swipeleft(function(e){ slideRight()});
+        $('.chapter').swiperight(function(e){  slideLeft()});
+
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        $( document ).on( "swipeleft", ".chapter", function(e){slideRight()});
-        $( document ).on( "swiperight", ".chapter", function(e){slideLeft()});
 
-        $('#button').click(function() {
-            alert("click was second :(");
+        
+        $('#button').on('click', function() {
+            app.clickDate = new Date();
+            $('#clickDate').html(toTimeDate(app.clickDate));
+            $('#difference').html(app.clickDate - app.tapDate + "ms");
         });
 
         $('#button').on('tap', function() {
-            alert("tap was first!");
+            app.tapDate = new Date();
+            $('#tapDate').html(toTimeDate(app.tapDate));
+           
         });
 
         $('#loadData').on('tap', function(){
             
-            $('#ajaxContent1').html('<img src="img/loader.gif" width="60px" />');
+            $('#ajaxContent').html('<img src="img/loader.gif" width="60px" />');
 
             setTimeout(function(){
-                   $('#ajaxContent1').html('<h2>Title: You loaded a puppy yay! :D</h2><p>Text: puppy is angry :(</p>');
+
+                    //Ajax call here
+                    var todos = ['Load dom', 'make ajax call', 'refresh dom'];
+                        
+                    var htmlString = "";
+                    todos.forEach(function(todo){
+                          htmlString += '<li><h3>todo: ' + todo + '</h3></li>';
+                    });
+
+                    $('#ajaxContent').html(htmlString);
+
+                    $('#ajaxContent').listView();
+
             }, 3000);
 
         });
@@ -112,4 +133,12 @@ function slideRight(name, reverse)
         app.index++;
         $.mobile.changePage( "#page_" + app.index, { transition: "slide" } );
     }
+}
+
+function toTimeDate(date){
+    var miliseconds = date.getMilliseconds();
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    var hour = date.getHours();
+    return hour + ':' + minutes + ':' + seconds + ':' + miliseconds;
 }
