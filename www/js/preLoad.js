@@ -12,6 +12,6 @@ function preload(arrayOfImages) {
 // Usage:
 
 preload([
-    'img/panda5.jpg',
+    'http://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Immortal%2C_Olve_%E2%80%9EAbbath%E2%80%9C_Eikemo_12.jpg/640px-Immortal%2C_Olve_%E2%80%9EAbbath%E2%80%9C_Eikemo_12.jpg',
     'img/loader.jpg',
 ]);
