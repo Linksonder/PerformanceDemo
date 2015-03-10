@@ -195,7 +195,7 @@ function DataAccess()
 
 function displayData(data, callCounter){
      $('#counter').html('<i>(calls: ' + callCounter + ')</i>');
-     $("#time").html(data.time ? data.time : "");
+     $("#time").html(data.validTill ? data.validTill : "");
      $("#name").html(data.name ? data.name : "");
      $("#gamertag").html(data.gamertag? data.gamertag : "");
 }
