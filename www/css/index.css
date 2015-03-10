@@ -37,7 +37,6 @@ body {
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
     height:100%;
     margin:0px;
     padding:0px;
@@ -70,7 +69,6 @@ body {
 }
 
 h1 {
-    font-size:24px;
     font-weight:normal;
     margin:0px;
     overflow:visible;
@@ -82,7 +80,6 @@ h1 {
     border-radius:4px;
     -webkit-border-radius:4px;
     color:#FFFFFF;
-    font-size:12px;
     margin:0px 30px;
     padding:2px 0px;
 }
@@ -121,25 +118,9 @@ h1 {
     height:100%;
     min-height:500px;
 }
-.chapter h1{
-    font-size:50px;
-}
-
-.chapter h2{
-    font-size:40px !important;
-}
-
-.chapter h3{
-    font-size:30px !important;
-}
-
-.chapter h3{
-    font-size:25px !important;
-}
 
 .chapter p{
     text-align:center;
-    font-size: 30px;
 }
 
 .champs{
@@ -158,9 +139,3 @@ h1 {
 #mf{
     background-position: -67px -134px;
 }
-
-.champion h3{font-size:30px !important;}
-.champion p {font-size:20px !important;}
-
-
-
