@@ -41,8 +41,8 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
-        $('.chapter').swipeleft(function(e){ slideRight()});
-        $('.chapter').swiperight(function(e){  slideLeft()});
+        $(window).swipeleft(slideRight);
+        $(window).swiperight(slideLeft);
 
         app.receivedEvent('deviceready');
     },
