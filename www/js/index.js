@@ -40,7 +40,8 @@ var app = {
     onPageInit: function(){
         $('.chapter').swipeleft(slideRight);
         $('.chapter').swiperight(slideLeft);
-    }
+    },
+    
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
