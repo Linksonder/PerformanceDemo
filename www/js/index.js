@@ -160,29 +160,35 @@ function DataAccess()
 
     self.getLongCachedData = function()
     {
+        //Retreive the data from the local storage
         var cachedData = window.localStorage.cachedData;
 
+        //If possible, parse the data from to json
         cachedData = cachedData ? JSON.parse(cachedData) : null;
 
-        if(cachedData && new Date() < new Date(cachedData.time) )
+        //Check if the cached data is still valid
+        if(cachedData && new Date() < new Date(cachedData.validTill) )
         {
             return cachedData;
         }
         else 
         {
-             //ajax call
+            //####### fake ajax call #######
             var data = { name: 'stino', gamertag: 'linksonder'};
-            self.serviceCalls++;
+            self.serviceCalls++; 
+            //### end of fake ajax call ###
 
             //Set time and cache
-            var time = new Date();
-            time.setSeconds(time.getSeconds() + 5); //This cache lasts 10 seconds
-            data.time = time;
+            var time = new Date(); //Get the current date
+            time.setSeconds(time.getSeconds() + 5); //This cache lasts 5 seconds
+            data.validTill = time; 
 
+            //Stringify data so that we can store it in the localstorage
+            //We could also use WebSQL
             window.localStorage.cachedData = JSON.stringify(data);
+
             return data;
         }
-        
     }
 
 }
