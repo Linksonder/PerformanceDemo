@@ -22,6 +22,7 @@ var app = {
      cacheIndex: 0,
      clickDate: null,
      tapDate: null,
+     dataAccess: null,
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -48,6 +49,7 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
+        app.dataAccess = new DataAccess();
         
         $('#button').on('click', function() {
             app.clickDate = new Date();
@@ -77,43 +79,29 @@ var app = {
 
                     $('#ajaxContent').html(htmlString);
 
-                    $('#ajaxContent').listView();
 
             }, 3000);
 
         });
 
         $('#clearCache').on('tap', function(){
-            window.localStorage.clear();
+            app.dataAccess.clear();
         });
 
-        $('#loadCache').on('tap', function(){
-            
-            if(window.localStorage.cachedData)
-            {
-                var cachedTime = new Date(window.localStorage.cachedData);
+        $('#getTempCachedData').on('tap', function(){
 
-                var time = new Date();
-                if(time < cachedTime)
-                {
-                    alert("still cached");
-                }
-                else
-                {
-                    var time = new Date();
-                    time.setSeconds(time.getSeconds() + 10);
-                    window.localStorage.cachedData = time;
-                    alert("refreshed cache");
-                }
-            }
-            else
-            {
-                var time = new Date();
-                time.setSeconds(time.getSeconds() + 10);
-                window.localStorage.cachedData = time;
-                alert("new Cache!");
-            }
+            var data = app.dataAccess.getTempCachedData();
+            displayData(data, app.dataAccess.serviceCalls);
         });
+
+        $('#getLongCachedData').on('tap', function(){
+
+            var data = app.dataAccess.getLongCachedData();
+            displayData(data, app.dataAccess.serviceCalls);
+
+        });
+
+
     }
 };
 
@@ -141,4 +129,67 @@ function toTimeDate(date){
     var minutes = date.getMinutes();
     var hour = date.getHours();
     return hour + ':' + minutes + ':' + seconds + ':' + miliseconds;
+}
+
+function DataAccess()
+{
+    var self = this;
+
+    self.cachedData = null;
+    self.serviceCalls = 0;
+
+    self.clear = function()
+    {
+        window.localStorage.clear();
+        self.cachedData = null;
+    }
+
+    self.getTempCachedData = function()
+    {
+        if(!self.cachedData)
+        {
+             //ajax call
+            var data = { name: 'stino', gamertag: 'linksonder' };
+
+            //Set cache
+            self.cachedData = data;
+        }
+
+        return self.cachedData;
+    }
+
+    self.getLongCachedData = function()
+    {
+        var cachedData = window.localStorage.cachedData;
+
+        cachedData = cachedData ? JSON.parse(cachedData) : null;
+
+        if(cachedData && new Date() < new Date(cachedData.time) )
+        {
+            return cachedData;
+        }
+        else 
+        {
+             //ajax call
+            var data = { name: 'stino', gamertag: 'linksonder'};
+            self.serviceCalls++;
+
+            //Set time and cache
+            var time = new Date();
+            time.setSeconds(time.getSeconds() + 5); //This cache lasts 10 seconds
+            data.time = time;
+
+            window.localStorage.cachedData = JSON.stringify(data);
+            return data;
+        }
+        
+    }
+
+}
+
+function displayData(data, callCounter){
+     $('#counter').html('<i>(calls: ' + callCounter + ')</i>');
+     $("#time").html(data.time ? data.time : "");
+     $("#name").html(data.name ? data.name : "");
+     $("#gamertag").html(data.gamertag? data.gamertag : "");
 }
