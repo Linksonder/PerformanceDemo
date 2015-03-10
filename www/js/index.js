@@ -116,7 +116,7 @@ function slideLeft(name, reverse)
 
 function slideRight(name, reverse)
 {
-    if(app.index < 7)
+    if(app.index < 6)
     {
         app.index++;
         $.mobile.changePage( "#page_" + app.index, { transition: "slide" } );
